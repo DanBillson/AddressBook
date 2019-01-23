@@ -1,0 +1,72 @@
+.contactList {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    left: -300px;
+    width: 0%;
+    max-width: 300px;
+    background-color: #333;
+    transition: 0.2s ease-in-out;
+
+    &.show {
+        left: 0px;
+        width: 100%;
+    }
+
+    &__header {
+        padding: 30px;
+        font-size: 32px;
+        font-weight: 200;
+    }
+
+    &__body {
+        height: 100%;
+    }
+
+    &__list {
+        padding: 10px 20px;
+        overflow-y: scroll;
+    }
+
+    &__contact {
+        border-radius: 3px;
+        letter-spacing: 1px;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+
+        a {
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+
+        &:hover {
+            background-color: #777;
+        }
+    }
+
+    &__footer {
+        padding: 30px;
+        font-size: 26px;
+        font-weight: 200;
+
+        h2 {
+            cursor: pointer;
+        }
+    }
+}
+
+.arrow {
+    position: absolute;
+    top: 5%;
+    left: 50px;
+    width: 30px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    &.show {
+        left: 350px;
+        transform: rotateY(180deg);
+    }
+}

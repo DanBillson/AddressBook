@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './utils/styles/main.scss';
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom'
+import ContactList from './components/ContactList/ContactList';
+import ContactInfo from './components/ContactInfo/ContactInfo';
 
-class App extends Component {
-  render() {
+// Create app and use browser router to know which conatct to display
+
+const App = () => {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="app">
+            <BrowserRouter>
+                <>
+                    <ContactList />
+                    <Route path="/:id" component={ ContactInfo } />
+                </>
+            </BrowserRouter>
+        </div>
     );
-  }
 }
 
 export default App;

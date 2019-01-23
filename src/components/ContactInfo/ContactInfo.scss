@@ -1,0 +1,45 @@
+.contactInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &__modal {
+        width: 90%;
+        max-width: 700px;
+        padding: 50px;
+
+        h1 {
+            font-size: 48px;
+            font-weight: 900;
+            padding-bottom: 30px;
+        }
+
+        p {
+            line-height: 1.4;
+            padding: 0 0 10px 20px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        span {
+            font-weight: 200;
+            padding-right: 15px;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20%;
+        border-bottom: 1px solid #555;
+
+        p {
+            padding: 0 0 20px;
+            font-size: 12px;
+            font-weight: 200;
+            cursor: pointer;
+        }
+    }
+}
