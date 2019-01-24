@@ -1,6 +1,6 @@
 import './ContactForm.scss';
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, change } from 'redux-form';
 import { connect } from 'react-redux';
 import { getPostcode, getAddress } from '../../actions';
 
@@ -8,6 +8,14 @@ class ContactForm extends Component {
     constructor(props) {
         super(props);
         this.state = { postcodeCheck: '' };
+    }
+
+    populateFields = () => {
+        if (!this.props.address[1]) { return; }
+        console.log(this.props.address[1].result);
+        this.props.dispatch(change('contactForm', 'address2', this.props.address[1].result.parish));
+        this.props.dispatch(change('contactForm', 'town', this.props.address[1].result.admin_district));
+        this.props.dispatch(change('contactForm', 'county', this.props.address[1].result.admin_county));
     }
 
     onSubmit = formValues => {
@@ -24,10 +32,11 @@ class ContactForm extends Component {
     handleBlur(event) {
         this.setState({ postcodeCheck: event.target.value });
         this.props.getPostcode(event.target.value);
+        this.props.getAddress(event.target.value);
     }
 
     postcodeLookup = () => {
-        this.props.getAddress(this.state.postcodeCheck);
+        this.populateFields();
     }
 
     render() {
@@ -56,7 +65,7 @@ class ContactForm extends Component {
 
 const mapStateToProps = state => {
     return { 
-        postcode: state.postcode, 
+        address: Object.values(state.postcode), 
     }
 }
 

@@ -30,7 +30,6 @@ export const deleteContact = id => async dispatch => {
 
 export const getAddress = postcode => async dispatch => {
     const { data } = await postcodes.get(`/postcodes/${postcode}`);
-    console.log(data);
     dispatch({ type: 'GET_ADDRESS', payload: data });
 }
 
