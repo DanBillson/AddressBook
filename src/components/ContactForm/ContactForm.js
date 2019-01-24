@@ -24,21 +24,17 @@ class ContactForm extends Component {
     handleBlur(event) {
         this.setState({ postcodeCheck: event.target.value });
         this.props.getPostcode(event.target.value);
-        console.log(this.props);
     }
 
     postcodeLookup = () => {
         this.props.getAddress(this.state.postcodeCheck);
     }
 
-    setCounty() {
-        return 'iusdvbisud';
-    }
-
     render() {
         return (
             <div className="contactForm" onClick={ this.props.closeForm }>
                 <form className="contactForm__form" onSubmit={ this.props.handleSubmit(this.onSubmit) } onClick={(e) => e.stopPropagation()}>
+                    <p className="contactForm__alert js-alert"></p>
                     <h1>{ this.props.title }</h1>
                     <Field name="name" label="Name" component={ this.renderInput } />
                     <Field name="address1" label="Address 1" component={ this.renderInput } />
@@ -60,7 +56,7 @@ class ContactForm extends Component {
 
 const mapStateToProps = state => {
     return { 
-        postcode: state.postcode 
+        postcode: state.postcode, 
     }
 }
 
