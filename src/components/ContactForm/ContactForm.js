@@ -10,9 +10,10 @@ class ContactForm extends Component {
         this.state = { postcodeCheck: '' };
     }
 
+    // Populate the address fields
     populateFields = () => {
         if (!this.props.address[1]) { return; }
-        console.log(this.props.address[1].result);
+
         this.props.dispatch(change('contactForm', 'address2', this.props.address[1].result.parish));
         this.props.dispatch(change('contactForm', 'town', this.props.address[1].result.admin_district));
         this.props.dispatch(change('contactForm', 'county', this.props.address[1].result.admin_county));
@@ -29,6 +30,7 @@ class ContactForm extends Component {
         );
     }
 
+    // Get address on input leave
     handleBlur(event) {
         this.setState({ postcodeCheck: event.target.value });
         this.props.getPostcode(event.target.value);
@@ -39,6 +41,7 @@ class ContactForm extends Component {
         this.populateFields();
     }
 
+    // render the form
     render() {
         return (
             <div className="contactForm" onClick={ this.props.closeForm }>

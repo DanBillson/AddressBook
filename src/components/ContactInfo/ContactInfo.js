@@ -11,10 +11,12 @@ class ContactInfo extends Component {
         this.state = { showForm: false };
     }
 
+    // toggle state to show form
     toggleForm() {
         this.setState({ showForm: !this.state.showForm });
     }
 
+    // Update contact with new values 
     onSubmit = formValues => {
         this.props.updateContact(this.props.match.params.id, formValues);
     }
